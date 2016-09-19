@@ -19,6 +19,38 @@ Write a function that takes one (1) string argument. Return that string with the
     "U'm jist a chu-town coder wuth a nuce flow."
 You can break ties however you want! (psst! check out [Counters](https://docs.python.org/2/library/collections.html#collections.Counter))
 
+import collections
+import string 
+
+def swapchars(s): 
+    cnt = collections.Counter()
+    for letter in s.lower(): 
+        if letter.isalpha(): 
+            cnt[letter] +=1 
+    (mc, y) = cnt.most_common(1)[0]
+    [(lc, z)] = cnt.most_common()[:-2:-1]
+    lst = list(s)
+    for n,i in enumerate(lst): 
+        if i == mc: 
+            lst[n] = lc
+        else: 
+            if i.lower() == mc:
+                lst[n] = lc.upper()
+            else: 
+                if i == lc: 
+                    lst[n] = mc
+                else: 
+                    if i.lower() == lc: 
+                        lst[n] = mc.upper()
+                    else: 
+                        lst[n] = i
+    final = "".join(lst)
+    print final
+
+
+    
+
+
 ### sortcat
 Write a function that takes one (1) integer argument _n_  and **an arbitrary number** of string arguments. Return the concatenation of the longest _n_  arguments from longest to shortest. If _n_  is -1, concatenate all the arguments in this fashion.
  
