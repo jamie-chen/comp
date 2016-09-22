@@ -21,7 +21,6 @@ You can break ties however you want! (psst! check out [Counters](https://docs.py
 
 import collections
 import string 
-
 def swapchars(s): 
     cnt = collections.Counter()
     for letter in s.lower(): 
@@ -44,11 +43,7 @@ def swapchars(s):
                         lst[n] = mc.upper()
                     else: 
                         lst[n] = i
-    final = "".join(lst)
-    print final
-
-
-    
+    print "".join(lst)
 
 
 ### sortcat
@@ -58,6 +53,15 @@ Write a function that takes one (1) integer argument _n_  and **an arbitrary num
     'abc'
     >>> sortcat(2, 'bc', 'c', 'abc')
     'abcbc'
+
+def sortcat(i, *argv): 
+    lst = list(argv)
+    if i == -1:
+        print "".join(lst)
+    else: 
+        lstf= sorted((sorted(lst, key=len)[-i:]), key=str.lower)
+        print "".join(lstf)
+
 
 ### Blue's Clues
 Blue just got a letter! She'd like to know where it's coming from, but the return address's state is listed as "PA" and Blue has no idea what state that corresponds to. (come on guys, she's a dog. you can't expect much.)
@@ -75,10 +79,20 @@ We'd like you to open the file and read its contents into a dictionary indexed b
 
 Then write a function `bluesclues` that takes in a state abbreviation (assume perfect capitalization) and returns the full name of the state.
 
+with open('states.txt') as f:
+    abbrev = dict(reversed(line.strip().split(',',1)) for line in f)
+
+def bluesclues(a): 
+    print (abbrev[a])
+
+        
 ### Blue's Booze
 Blue owns a vineyard (she's really made it big since her hit TV show) and needs to ship wine to Nebraska. However, she doesn't know what the state abbreviation is! 
 
 Using your dictionary from above, write a function `bluesbooze` that takes in the full name of a state (again, assume perfect capitalization) and returns the state's abbreviation.
+
+def bluesbooze(a):
+    print abbrev.keys()[abbrev.values().index(a)]
 
 # Feedback?
 You're done! Congrats! Be sure to save your changes and push to your Github. Thanks, dude!
