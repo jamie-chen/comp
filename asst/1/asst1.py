@@ -1,5 +1,4 @@
 
-ASSIGNMENT 1: 
 
 #1. swapchars
 
@@ -29,18 +28,19 @@ def swapchars(s):
                         lst[n] = mc.upper()
                     else: 
                         lst[n] = i
-    str = "".join(lst)
-    print str 
+    return "".join(lst)
+    
 
 #2. sortcat
 
 def sortcat(i, *argv): 
-lst = list(argv)
-if i == -1:
-    print "".join(lst)
-else: 
-    lstf= sorted((sorted(lst, key=len)[-i:]), key=str.lower)
-    print "".join(lstf)
+    lst = list(argv)
+    if i == -1:
+            lstf = sorted(lst, key=len)
+    else: 
+        lstf = sorted(lst, key=len)[-i:]
+    lstf.reverse()
+    return "".join(lstf)
 
 #3. blue's clues
 
@@ -48,17 +48,12 @@ with open('states.txt') as f:
     abbrev = dict(reversed(line.strip().split(',',1)) for line in f)
 
 def bluesclues(a): 
-    print (abbrev[a])
+    return (abbrev[a])
 
 #4. blue's booze
 def bluesbooze(a):
-    print abbrev.keys()[abbrev.values().index(a)]
+    return abbrev.keys()[abbrev.values().index(a)]
 
 
 # testing 
-class TestStringMethods(unittest.TestCase):
-    def test_swapchars(self):
-        self.assertEqual(swapchars('I\'m just a chi-town coder with a nice flow.'), 'U\'m jist a chu-town coder wuth a nuce flow.')
 
-if __name__ == '__main__':
-    unittest.main()

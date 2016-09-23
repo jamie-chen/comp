@@ -19,33 +19,6 @@ Write a function that takes one (1) string argument. Return that string with the
     "U'm jist a chu-town coder wuth a nuce flow."
 You can break ties however you want! (psst! check out [Counters](https://docs.python.org/2/library/collections.html#collections.Counter))
 
-import collections
-import string 
-def swapchars(s): 
-    cnt = collections.Counter()
-    for letter in s.lower(): 
-        if letter.isalpha(): 
-            cnt[letter] +=1 
-    (mc, y) = cnt.most_common(1)[0]
-    [(lc, z)] = cnt.most_common()[:-2:-1]
-    lst = list(s)
-    for n,i in enumerate(lst): 
-        if i == mc: 
-            lst[n] = lc
-        else: 
-            if i.lower() == mc:
-                lst[n] = lc.upper()
-            else: 
-                if i == lc: 
-                    lst[n] = mc
-                else: 
-                    if i.lower() == lc: 
-                        lst[n] = mc.upper()
-                    else: 
-                        lst[n] = i
-    print "".join(lst)
-
-
 ### sortcat
 Write a function that takes one (1) integer argument _n_  and **an arbitrary number** of string arguments. Return the concatenation of the longest _n_  arguments from longest to shortest. If _n_  is -1, concatenate all the arguments in this fashion.
  
@@ -53,14 +26,6 @@ Write a function that takes one (1) integer argument _n_  and **an arbitrary num
     'abc'
     >>> sortcat(2, 'bc', 'c', 'abc')
     'abcbc'
-
-def sortcat(i, *argv): 
-    lst = list(argv)
-    if i == -1:
-        print "".join(lst)
-    else: 
-        lstf= sorted((sorted(lst, key=len)[-i:]), key=str.lower)
-        print "".join(lstf)
 
 
 ### Blue's Clues
@@ -79,20 +44,12 @@ We'd like you to open the file and read its contents into a dictionary indexed b
 
 Then write a function `bluesclues` that takes in a state abbreviation (assume perfect capitalization) and returns the full name of the state.
 
-with open('states.txt') as f:
-    abbrev = dict(reversed(line.strip().split(',',1)) for line in f)
-
-def bluesclues(a): 
-    print (abbrev[a])
-
         
 ### Blue's Booze
 Blue owns a vineyard (she's really made it big since her hit TV show) and needs to ship wine to Nebraska. However, she doesn't know what the state abbreviation is! 
 
 Using your dictionary from above, write a function `bluesbooze` that takes in the full name of a state (again, assume perfect capitalization) and returns the state's abbreviation.
 
-def bluesbooze(a):
-    print abbrev.keys()[abbrev.values().index(a)]
 
 # Feedback?
 You're done! Congrats! Be sure to save your changes and push to your Github. Thanks, dude!
